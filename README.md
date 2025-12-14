@@ -18,6 +18,7 @@ Based on comprehensive testing and analysis using LangSmith token consumption tr
 **Winner: Same Node Architecture** ✅
 
 The Same Node architecture demonstrates superior performance across all metrics:
+
 - **Lower Token Consumption** - More efficient use of LLM resources
 - **Fewer API Calls** - Reduced network overhead and latency
 - **Better Cost Efficiency** - Lower operational costs at scale
@@ -32,6 +33,7 @@ The Same Node architecture demonstrates superior performance across all metrics:
 This architecture processes autosuggestion generation within a single node in the LangGraph workflow.
 
 **Key Characteristics:**
+
 - Consolidated logic in one node
 - Reduced inter-node communication
 - Optimized token usage through context reuse
@@ -52,6 +54,7 @@ This architecture processes autosuggestion generation within a single node in th
 This architecture distributes autosuggestion generation across multiple specialized nodes in the LangGraph workflow.
 
 **Key Characteristics:**
+
 - Modular node separation
 - Dedicated nodes for different tasks
 - Higher inter-node communication overhead
@@ -67,7 +70,6 @@ This architecture distributes autosuggestion generation across multiple speciali
 
 ## 📁 Project Structure
 
-```
 Autosuggestion_different_architectures/
 │
 ├── Trying_Autosuggestion_same_node/     # Winner: Single-node architecture ✅
@@ -92,81 +94,68 @@ Autosuggestion_different_architectures/
 │   ├── requirements.txt                 # Dependencies
 │   └── README.md                        # Architecture details
 │
-├── Statefull/                           # Reference: Stateful implementation
-├── Statefull_no_db/                     # Reference: Stateful without DB
-├── Stateless/                           # Reference: Stateless implementation
-│
 └── README.md                            # This file
-```
 
-## 🧪 Performance Metrics
+## 🧪 Testing Methodology
+
+### Test Workflows
+
+We designed custom workflows based on different topics to comprehensively evaluate both architectures. Each workflow tests different combinations of autosuggestions:
+
+#### Test Case 1: Water
+
+- **Autosuggestions Implemented:**
+  - `Simpler_explanation`
+
+#### Test Case 2: Crow
+
+- **Autosuggestions Implemented:**
+  - `Another_joke`
+  - `Simpler_explanation`
+
+#### Test Case 3: Bats
+
+- **Autosuggestions Implemented:**
+  - `Similar_joke`
+  - `Simpler_explanation`
+
+**Note:** We manually define workflows and select which autosuggestions to implement for each test scenario, allowing us to evaluate performance across varying complexity levels.
+
+## 📊 Performance Metrics
 
 ### Token Consumption Comparison
 
 *Measured using LangSmith tracking*
 
-| Metric | Same Node | Different Node | Improvement |
-|--------|-----------|----------------|-------------|
-| Average Tokens per Request | TBD | TBD | TBD% |
-| Total API Calls per Workflow | TBD | TBD | TBD% |
-| Average Response Time (ms) | TBD | TBD | TBD% |
-| Cost per 1000 Requests | TBD | TBD | TBD% |
+| Metric                       | Same Node | Different Node | Improvement |
+| ---------------------------- | --------- | -------------- | ----------- |
+| Average Tokens per Request   | TBD       | TBD            | TBD%        |
+| Total API Calls per Workflow | TBD       | TBD            | TBD%        |
+| Average Response Time (ms)   | TBD       | TBD            | TBD%        |
+| Cost per 1000 Requests       | TBD       | TBD            | TBD%        |
 
 ### API Call Analysis
 
-| Architecture | Calls per Workflow | LLM Invocations | State Transitions |
-|--------------|-------------------|-----------------|-------------------|
-| Same Node | TBD | TBD | TBD |
-| Different Node | TBD | TBD | TBD |
+| Architecture   | Calls per Workflow | LLM Invocations | State Transitions |
+| -------------- | ------------------ | --------------- | ----------------- |
+| Same Node      | TBD                | TBD             | TBD               |
+| Different Node | TBD                | TBD             | TBD               |
+
+### Results by Test Workflow
+
+| Workflow | Autosuggestions                   | Same Node (Tokens) | Different Node (Tokens) | Same Node (API Calls) | Different Node (API Calls) |
+| -------- | --------------------------------- | ------------------ | ----------------------- | --------------------- | -------------------------- |
+| Water    | Simpler_explanation               | TBD                | TBD                     | TBD                   | TBD                        |
+| Crow     | Another_joke, Simpler_explanation | TBD                | TBD                     | TBD                   | TBD                        |
+| Bats     | Similar_joke, Simpler_explanation | TBD                | TBD                     | TBD                   | TBD                        |
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
 - Python 3.11+
-- Google AI API Key ([Get it here](https://makersuite.google.com/app/apikey))
+- Google AI API Key
 - LangSmith API Key (for tracking and analytics)
-
-### Installation
-
-```bash
-# Clone the repository
-git clone <repository-url>
-cd Autosuggestion_different_architectures
-
-# Navigate to desired architecture
-cd Trying_Autosuggestion_same_node  # or Trying_Autosuggestion_diff_node
-
-# Install dependencies
-pip install -r requirements.txt
-```
-
-### Configuration
-
-Create a `.env` file with required API keys:
-
-```env
-GOOGLE_API_KEY=your_google_api_key_here
-LANGSMITH_API_KEY=your_langsmith_api_key_here
-MODEL_NAME=gemini-2.0-flash
-```
-
-### Running the Server
-
-```bash
-# Start the FastAPI server
-python api_server.py
-
-# Server will be available at http://localhost:8000
-# API documentation at http://localhost:8000/docs
-```
-
-### Testing
-
-```bash
-# Run API tests
-python test_api.py
-```
 
 ## 🔧 Technology Stack
 
@@ -181,10 +170,15 @@ python test_api.py
 
 All performance metrics were collected using:
 
-1. **LangSmith Integration** - Automatic token and cost tracking
-2. **Consistent Test Scenarios** - Standardized input prompts and workflows
-3. **Multiple Iterations** - Average of 100+ requests per architecture
-4. **Controlled Environment** - Same API keys, models, and configurations
+1. **LangSmith Integration** - Automatic token and cost tracking for all LLM calls
+2. **Custom Test Workflows** - Three distinct topic-based scenarios (Water, Crow, Bats)
+3. **Manual Workflow Design** - We define our own workflows and select specific autosuggestions to implement
+4. **Autosuggestion Types Tested:**
+   - `Simpler_explanation` - Generates a simplified version of the content
+   - `Another_joke` - Provides an alternative joke on the same topic
+   - `Similar_joke` - Creates a joke with similar themes or style
+5. **Multiple Iterations** - Consistent testing across both architectures
+6. **Controlled Environment** - Same API keys, models, and configurations for fair comparison
 
 ## 🎯 Use Cases
 
@@ -194,21 +188,6 @@ These architectures are designed for:
 - **Writing Assistants** - Context-aware autocompletions
 - **Chatbots** - Predictive response generation
 - **Content Creation Tools** - AI-powered recommendations
-
-## 📚 Additional Resources
-
-- [LangGraph Documentation](https://langchain-ai.github.io/langgraph/)
-- [LangSmith Documentation](https://docs.smith.langchain.com/)
-- [FastAPI Documentation](https://fastapi.tiangolo.com/)
-- [Google AI Studio](https://makersuite.google.com/)
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit pull requests or open issues for:
-- Additional architecture patterns
-- Performance optimization suggestions
-- Benchmark improvements
-- Documentation enhancements
 
 ---
 
