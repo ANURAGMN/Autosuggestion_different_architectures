@@ -41,9 +41,7 @@ This architecture processes autosuggestion generation within a single node in th
 
 **Architecture Diagram:**
 
-![Same Node Architecture](path/to/same-node-architecture.png)
-
-*[Paste architecture diagram here]*
+![1765738279423](image/README/1765738279423.png)
 
 ---
 
@@ -62,9 +60,7 @@ This architecture distributes autosuggestion generation across multiple speciali
 
 **Architecture Diagram:**
 
-![Different Node Architecture](path/to/different-node-architecture.png)
-
-*[Paste architecture diagram here]*
+![1765738398988](image/README/1765738398988.png)
 
 ---
 
@@ -97,6 +93,10 @@ Autosuggestion_different_architectures/
 └── README.md                            # This file
 
 ## 🧪 Testing Methodology
+
+### Test Environment
+
+All tests are conducted using the **joke_api** - a FastAPI-based application that generates jokes and explanations, with autosuggestions provided based on user-selected workflows.
 
 ### Test Workflows
 
