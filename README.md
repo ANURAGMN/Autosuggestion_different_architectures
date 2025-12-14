@@ -66,31 +66,58 @@ This architecture distributes autosuggestion generation across multiple speciali
 
 ## 📁 Project Structure
 
+```
 Autosuggestion_different_architectures/
 │
 ├── Trying_Autosuggestion_same_node/     # Winner: Single-node architecture ✅
 │   ├── src/
+│   │   ├── __init__.py                  # Package initializer
 │   │   ├── graph.py                     # Consolidated autosuggestion logic
 │   │   ├── core.py                      # Autosuggestion generation
 │   │   ├── models.py                    # State type definitions
 │   │   └── config.py                    # LLM configuration
+│   ├── .langgraph_api/                  # LangGraph API cache
 │   ├── api_server.py                    # FastAPI endpoints
+│   ├── main.py                          # Application entry point
 │   ├── test_api.py                      # API testing suite
-│   ├── requirements.txt                 # Dependencies
+│   ├── try.ipynb                        # Experimentation notebook
+│   ├── langgraph.json                   # LangGraph configuration
+│   ├── pyproject.toml                   # Project metadata
+│   ├── requirements.txt                 # Production dependencies
+│   ├── requirements-simple.txt          # Minimal dependencies
+│   ├── Dockerfile                       # Container configuration
+│   ├── checkpoints.db                   # SQLite checkpoint storage
+│   ├── .env                             # Environment variables
 │   └── README.md                        # Architecture details
 │
 ├── Trying_Autosuggestion_diff_node/     # Multi-node architecture
 │   ├── src/
+│   │   ├── __init__.py                  # Package initializer
 │   │   ├── graph.py                     # Distributed node workflow
 │   │   ├── core.py                      # Specialized node functions
 │   │   ├── models.py                    # State type definitions
 │   │   └── config.py                    # LLM configuration
+│   ├── .langgraph_api/                  # LangGraph API cache
 │   ├── api_server.py                    # FastAPI endpoints
+│   ├── main.py                          # Application entry point
 │   ├── test_api.py                      # API testing suite
-│   ├── requirements.txt                 # Dependencies
+│   ├── try.ipynb                        # Experimentation notebook
+│   ├── langgraph.json                   # LangGraph configuration
+│   ├── pyproject.toml                   # Project metadata
+│   ├── requirements.txt                 # Production dependencies
+│   ├── requirements-simple.txt          # Minimal dependencies
+│   ├── Dockerfile                       # Container configuration
+│   ├── checkpoints.db                   # SQLite checkpoint storage
+│   ├── .env                             # Environment variables
 │   └── README.md                        # Architecture details
 │
+├── deployment/                          # Deployment configurations
+├── image/                               # Documentation images
+├── AWS_Hosting_Instructions.pdf         # AWS deployment guide
+├── SUPABASE_WINDOWS_CONNECTION_FIX.md   # Supabase connection troubleshooting
+├── TECHNICAL_ANALYSIS.md                # Technical analysis documentation
 └── README.md                            # This file
+```
 
 ## 🧪 Testing Methodology
 
